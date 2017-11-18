@@ -171,14 +171,18 @@ sample config: .vscode/launch.json
 
 [More Info @jscodeshift](https://github.com/facebook/jscodeshift/issues/223)
 
-## Similar Codemods
+## Alt Codemods
 
 - [react-codemod](https://github.com/reactjs/react-codemod) - React codemod scripts to update React APIs.
 - [js-codemod](https://github.com/cpojer/js-codemod/) - Codemod scripts to transform code to next generation JS.
 - [js-transforms](https://github.com/jhgg/js-transforms) - Some documented codemod experiments to help you learn.
 
 ## Support
-[jscodeshift]: https://github.com/facebook/jscodeshift
-[recast]: https://github.com/benjamn/recast
-[ast-types]: https://github.com/benjamn/ast-types
-[ast-explorer]: http://astexplorer.net/
+
+jscodeshift: [https://github.com/facebook/jscodeshift](https://github.com/facebook/jscodeshift)
+
+recast: [https://github.com/benjamn/recast](https://github.com/benjamn/recast)
+
+ast-types: [https://github.com/benjamn/ast-types](https://github.com/benjamn/ast-types)
+
+ast-explorer: [http://astexplorer.net/](http://astexplorer.net/)
