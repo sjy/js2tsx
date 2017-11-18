@@ -1,0 +1,28 @@
+{
+    "name": "js2tsx",
+    "version": "1.0.0",
+    "description": "migrate js based react-project to typescript",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node --inspect ./node_modules/jscodeshift/bin/jscodeshift.sh -t ./transforms/react-to-tsx.js ./samples --dry -p --run-in-band --extensions js --parser babylon",
+        "react2tsx": "jscodeshift -t ./transforms/react-to-tsx.js --parser babylon --dry -p --extensions js ./samples",
+        "sfc2tsx": "jscodeshift -t ./transforms/sfc-to-tsx.js --parser babylon --dry -p --extensions js ./samples",
+        "rename": "node ./rename"
+    },
+    "keywords": [
+        "jscodeshift",
+        "codemod",
+        "react",
+        "migration",
+        "transform",
+        "typescript",
+        "jsx",
+        "tsx"
+    ],
+    "dependencies": {
+        "jscodeshift": "^0.3.32",
+        "shelljs": "^0.7.8"
+    },
+    "author": "johnson",
+    "license": "MIT"
+}
