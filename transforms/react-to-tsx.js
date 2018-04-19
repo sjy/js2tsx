@@ -1,8 +1,6 @@
-module.exports = function (file, api) {
+module.exports = function(file, api) {
     const j = api.jscodeshift;
-    const {
-        statement
-    } = j.template;
+    const { statement } = j.template;
 
     function getTypeAnnotation(node) {
         if (!node.value) return 'any';
@@ -24,8 +22,8 @@ module.exports = function (file, api) {
         if (!Array.isArray(properties) || properties.length === 0) return;
         const propName = `${className}Props`;
         const stateName = `${className}State`;
-        const propsInterfaceDecl = statement `interface ${propName} extends BaseProps { };\n`;
-        const stateInterfaceDecl = statement `type ${stateName} = {};\n`;
+        const propsInterfaceDecl = statement`interface ${propName} extends RModule { };\n`;
+        const stateInterfaceDecl = statement`type ${stateName} = {};\n`;
         const props = properties.map(p => ({
             key: j.identifier(p.key.name),
             value: getTypeAnnotation(p),
@@ -36,9 +34,11 @@ module.exports = function (file, api) {
             j.objectTypeProperty(p.key, p.value, true)
         );
 
-        return j(ast)
-            .insertBefore(stateInterfaceDecl)
-            .insertBefore(propsInterfaceDecl);
+        return (
+            j(ast)
+                // .insertBefore(stateInterfaceDecl)
+                .insertBefore(propsInterfaceDecl)
+        );
     }
 
     let source = file.source;
@@ -61,18 +61,22 @@ module.exports = function (file, api) {
 
             // add class generic type annotation
             decl.value.superTypeParameters = j.typeParameterInstantiation([
-                j.genericTypeAnnotation(j.identifier(propName), null),
+                j.intersectionTypeAnnotation([
+                    j.genericTypeAnnotation(j.identifier(propName), null),
+                    j.genericTypeAnnotation(j.identifier('State'), null),
+                    j.genericTypeAnnotation(j.identifier('DispatchActions'), null),
+                ]),
                 j.genericTypeAnnotation(j.identifier(stateName), null),
             ]);
 
             if (
                 j(source)
-                .find(j.InterfaceDeclaration, {
-                    id: {
-                        name: propName
-                    }
-                })
-                .size() === 0
+                    .find(j.InterfaceDeclaration, {
+                        id: {
+                            name: propName,
+                        },
+                    })
+                    .size() === 0
             ) {
                 insertPropsAndState(decl, className, props);
             }

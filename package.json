@@ -1,7 +1,7 @@
 {
     "name": "js2tsx",
     "version": "1.0.0",
-    "description": "migrate js based react-project to typescript",
+    "description": "A CLI tool help developer transform react project with typescript type definitions",
     "main": "index.js",
     "scripts": {
         "dev": "node --inspect ./node_modules/jscodeshift/bin/jscodeshift.sh -t ./transforms/react-to-tsx.js ./samples --dry -p --run-in-band --extensions js --parser babylon",
@@ -9,20 +9,37 @@
         "sfc2tsx": "jscodeshift -t ./transforms/sfc-to-tsx.js --parser babylon --dry -p --extensions js ./samples",
         "rename": "node ./rename"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sjy/js2tsx"
+    },
+    "lint-staged": {
+        "*.js": [
+            "prettier --trailing-comma es5 --single-quote --write",
+            "git add"
+        ]
+    },
+    "homepage": "https://github.com/sjy/js2tsx",
     "keywords": [
-        "jscodeshift",
         "codemod",
-        "react",
-        "migration",
-        "transform",
-        "typescript",
+        "jscodeshift",
         "jsx",
-        "tsx"
+        "migration",
+        "react",
+        "transform",
+        "tsx",
+        "typescript"
     ],
     "dependencies": {
+        "commander": "^2.15.1",
         "jscodeshift": "^0.3.32",
         "shelljs": "^0.7.8"
     },
-    "author": "johnson",
-    "license": "MIT"
+    "author": "sjy",
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^4.19.1",
+        "lint-staged": "^7.0.4",
+        "prettier": "^1.12.1"
+    }
 }

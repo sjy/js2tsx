@@ -1,10 +1,17 @@
 # React to TSX Code
 
+<p align="center">
+
+[![npm](https://img.shields.io/npm/v/js2tsx.svg)](https://www.npmjs.com/package/js2tsx)
+[![npm](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/js2tsx)
+
+</p>
+
 > A toolkit provide some codemod scripts based on [jscodeshift](https://github.com/facebook/jscodeshift) to migrating react code base to typesceipt.
 
 ## Getting Started
 
->**NOTE** Please make sure a stable and modern verison of node and npm packages installed!
+> **NOTE** Please make sure a stable and modern verison of node and npm packages installed!
 
 ```bash
 git clone $this-repo
@@ -150,22 +157,22 @@ interface CounterProps extends BaseProps {
 
 ## Debug
 
->VS Code debug tool + nodejs debugger is heavilly recommended;
-sample config: .vscode/launch.json
+> VS Code debug tool + nodejs debugger is heavilly recommended;
+> sample config: .vscode/launch.json
 
-``` json
+```json
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch via NPM",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "dev"],
-            "port": 9229
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via NPM",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 9229
+    }
+  ]
 }
 ```
 
@@ -173,9 +180,9 @@ sample config: .vscode/launch.json
 
 ## Alt Codemods
 
-- [react-codemod](https://github.com/reactjs/react-codemod) - React codemod scripts to update React APIs.
-- [js-codemod](https://github.com/cpojer/js-codemod/) - Codemod scripts to transform code to next generation JS.
-- [js-transforms](https://github.com/jhgg/js-transforms) - Some documented codemod experiments to help you learn.
+* [react-codemod](https://github.com/reactjs/react-codemod) - React codemod scripts to update React APIs.
+* [js-codemod](https://github.com/cpojer/js-codemod/) - Codemod scripts to transform code to next generation JS.
+* [js-transforms](https://github.com/jhgg/js-transforms) - Some documented codemod experiments to help you learn.
 
 ## Support
 
