@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "A CLI tool help developer transform react project with typescript type definitions",
   "main": "index.js",
+  "bin": {
+    "js2tsx": "./bin/js2tsx.sh"
+  },
   "scripts": {
     "dev": "node --inspect ./node_modules/jscodeshift/bin/jscodeshift.sh -t ./transforms/react-to-tsx.js ./samples --dry -p --run-in-band --extensions js --parser babylon",
     "react2tsx": "jscodeshift -t ./transforms/react-to-tsx.js --parser babylon --dry -p --extensions js ./samples",
     "sfc2tsx": "jscodeshift -t ./transforms/sfc-to-tsx.js --parser babylon --dry -p --extensions js ./samples",
-    "rename": "node ./rename",
+    "rename": "node ./script/rename",
     "lint": "eslint . ",
     "test": "jest"
   },
@@ -33,6 +36,7 @@
     "typescript"
   ],
   "dependencies": {
+    "chalk": "^2.4.0",
     "commander": "^2.15.1",
     "eslint-plugin-jest": "^21.15.1",
     "jest": "^22.4.3",
@@ -45,5 +49,8 @@
     "eslint": "^4.19.1",
     "lint-staged": "^7.0.4",
     "prettier": "^1.12.1"
+  },
+  "engines": {
+    "node": ">= 4"
   }
 }
